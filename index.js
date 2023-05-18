@@ -1,0 +1,36 @@
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+
+const express = require('express');
+const app = express();
+const expressLayouts = require('express-ejs-layouts');
+
+app.use(express.static('public'));
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/src/views') //!TEMP needed?
+app.set('layout', 'layouts/layout')
+app.use(expressLayouts);
+
+// Set up database connection
+const mongoose = require('mongoose');
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true})
+.then((res) => {
+    console.log('Connected to database!');
+}).catch((err) => {
+    if (err) {
+        console.log('An error has occured while connecting to the database. ' +err);
+        return;
+    }
+});
+const db = mongoose.connection;
+
+// Set up routes
+const indexRouter = require('./src/routes/index.route');
+app.use('/', indexRouter);
+// const postRouter = require('./src/routes/posts.route');
+// app.use('/posts', postRouter);
+// const authorRouter = require('./src/routes/authors.route');
+// app.use('/authors', authorRouter);
+
+app.listen(process.env.PORT || 3000);
