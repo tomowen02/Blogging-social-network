@@ -28,8 +28,8 @@ const db = mongoose.connection;
 // Set up routes
 const indexRouter = require('./src/routes/index.route');
 app.use('/', indexRouter);
-// const postRouter = require('./src/routes/posts.route');
-// app.use('/posts', postRouter);
+const postRouter = require('./src/routes/posts.route');
+app.use('/posts', postRouter);
 // const authorRouter = require('./src/routes/authors.route');
 // app.use('/authors', authorRouter);
 
