@@ -1,0 +1,9 @@
+.grid-basic {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(275px, 3fr));
+}
+
+.grid-basic article {
+    margin: 0;
+}
