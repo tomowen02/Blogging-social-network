@@ -5,3 +5,7 @@
 .two-option-toggle {
     margin-inline: 0.5em;
 }
+
+.sidebar-right-grid {
+    grid-template-columns: 20% auto;
+}

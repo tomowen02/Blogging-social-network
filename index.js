@@ -31,7 +31,9 @@ const indexRouter = require('./src/routes/index.route');
 app.use('/', indexRouter);
 const postRouter = require('./src/routes/posts.route');
 app.use('/posts', postRouter);
- const authorRouter = require('./src/routes/authors.route');
- app.use('/bloggers', authorRouter);
+const authorRouter = require('./src/routes/authors.route');
+app.use('/bloggers', authorRouter);
+const adminRouter = require('./src/routes/admin_controls.route');
+ app.use('/admin', adminRouter);
 
 app.listen(process.env.PORT || 3000);
