@@ -10,7 +10,7 @@ router.get('/new', async (req, res) => {
 });
 
 router.get('/individual-post', async (req, res) => {
-    res.render('posts/display')
+    res.render('posts/individual')
 });
 
 module.exports = router;
