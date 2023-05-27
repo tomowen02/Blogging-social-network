@@ -1,0 +1,12 @@
+<h2>Admin controls</h2>
+<div class="grid sidebar-right-grid">
+    <aside>
+        <h3>Controls</h3>
+        <p><a href="/admin/">Dashboard</a></p>
+        <p><a href="/admin/categories">Categories</a></p>
+        <p><a href="#">Moderation</a></p>
+    </aside>
+    <article class="no-top-margin">
+        <%- include(`_${locals.subpage || 'dashboard'}.ejs`) %>
+    </article>
+</div>
