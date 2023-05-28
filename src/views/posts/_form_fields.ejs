@@ -1,19 +1,46 @@
 <label for="title">Post title</label>
-<input id="title" name="title" placeholder="Title of the post" required>
+<input
+    id="title"
+    name="title"
+    placeholder="Title of the post"
+    required
+    value="<%= locals.post ? locals.post.title : '' %>">
 
 <label for="description">Description</label>
-<input id="description" name="description" placeholder="Short description" required>
+<input
+    id="description" 
+    name="description"
+    placeholder="Short description"
+    
+    value="<%= locals.post ? locals.post.description : '' %>">
 
 <div class="grid">
     <div>
         <label for="slug">Slug</label>
-        <input id="slug" name="slug" placeholder="Slug" required>
+        <input
+            id="slug"
+            name="slug"
+            placeholder="Slug"
+            required
+            value="<%= locals.post ? locals.post.slug : '' %>">
     </div>
     <div>
         <label for="category">Category</label>
-        <input id="category" name="category" placeholder="Category" required>
+        <select name="category" id="category" placeholder="Category" required>
+            <% locals.categories.forEach(category => { %>
+                <% if (category._id == locals.post.category){ %> 
+                    <option selected label="<%= category.name %>" value="<%= category._id %>">
+                <% } else { %>
+                    <option label="<%= category.name %>" value="<%= category._id %>">
+                <% } %>  
+            <% }) %>
+        </select>
     </div>
 </div>
-
-<label for="main-body">Main body</label>
-<textarea id="main-body" name="main-body" placeholder="Type the body of the post here" rows="10" required></textarea>
+<label for="body">Main body</label>
+<textarea
+    id="body"
+    name="body"
+    placeholder="Type the body of the post here"
+    rows="10"
+    required><%= locals.post ? locals.post.body : '' %></textarea>

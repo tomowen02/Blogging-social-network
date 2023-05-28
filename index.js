@@ -6,12 +6,14 @@ const express = require('express');
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path')
+const bodyParser = require('body-parser')
 
 app.use(express.static(path.join(__dirname, '/src/public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/src/views')); //!TEMP needed?
 app.set('layout', 'layouts/layout')
 app.use(expressLayouts);
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }))
 
 // Set up database connection
 const mongoose = require('mongoose');

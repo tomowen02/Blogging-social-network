@@ -1,12 +1,21 @@
 <h2>All posts</h2>
 <p><a href="/posts/new" role="button">New post</a></p>
-<div class="grid">
-    <input type="search" id="search" name="search" placeholder="Search">
-    <select id="category" required>
-        <option value="" selected>Select a category</option>
-        <option>…</option>
-    </select>
-</div>
+<form action="/posts" method="GET">
+    <div class="grid">
+        <input type="title" id="title" name="title" placeholder="Search" value="<%= locals.searchOptions.title %>">
+        <select name="category" id="category" placeholder="Category">
+            <option label="Select a category to filter by" value=""></option>
+            <% locals.categories.forEach(category => { %>
+                <% if (category.id == locals.searchOptions.category){ %> 
+                    <option selected label="<%= category.name %>" value="<%= category._id %>">
+                <% } else { %>
+                    <option label="<%= category.name %>" value="<%= category._id %>">
+                <% } %> 
+            <% }) %>
+        </select>
+    </div>
+    <button type="submit">Search</button>
+</form>
 <section>
     <label for="switch" class="inline">
         All posts
@@ -16,115 +25,8 @@
 </section>
 <section>
     <div class="grid-basic">
-        <a href="/posts/individual-post">
-            <article>
-                <hgroup>
-                    <h3>Post title</h3>
-                    <p>By: Tim Westington</p>
-                </hgroup>
-                <p style="color:hsl(205, 20%, 32%)">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend est urna, vel rhoncus mauris.</p>
-                <p>Category: Lifestyle</p>
-            </article>
-        </a>
-        <a href="/posts/individual-post">
-            <article>
-                <hgroup>
-                    <h3>Post title</h3>
-                    <p>By: Tim Westington</p>
-                </hgroup>
-                <p style="color:hsl(205, 20%, 32%)">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend est urna, vel rhoncus mauris.</p>
-                <p>Category: Lifestyle</p>
-            </article>
-        </a>
-        <a href="/posts/individual-post">
-            <article>
-                <hgroup>
-                    <h3>Post title</h3>
-                    <p>By: Tim Westington</p>
-                </hgroup>
-                <p style="color:hsl(205, 20%, 32%)">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend est urna, vel rhoncus mauris.</p>
-                <p>Category: Lifestyle</p>
-            </article>
-        </a>
-        <a href="/posts/individual-post">
-            <article>
-                <hgroup>
-                    <h3>Post title</h3>
-                    <p>By: Tim Westington</p>
-                </hgroup>
-                <p style="color:hsl(205, 20%, 32%)">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend est urna, vel rhoncus mauris.</p>
-                <p>Category: Lifestyle</p>
-            </article>
-        </a>
-        <a href="/posts/individual-post">
-            <article>
-                <hgroup>
-                    <h3>Post title</h3>
-                    <p>By: Tim Westington</p>
-                </hgroup>
-                <p style="color:hsl(205, 20%, 32%)">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend est urna, vel rhoncus mauris.</p>
-                <p>Category: Lifestyle</p>
-            </article>
-        </a>
-        <a href="/posts/individual-post">
-            <article>
-                <hgroup>
-                    <h3>Post title</h3>
-                    <p>By: Tim Westington</p>
-                </hgroup>
-                <p style="color:hsl(205, 20%, 32%)">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend est urna, vel rhoncus mauris.</p>
-                <p>Category: Lifestyle</p>
-            </article>
-        </a>
-        <a href="/posts/individual-post">
-            <article>
-                <hgroup>
-                    <h3>Post title</h3>
-                    <p>By: Tim Westington</p>
-                </hgroup>
-                <p style="color:hsl(205, 20%, 32%)">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend est urna, vel rhoncus mauris.</p>
-                <p>Category: Lifestyle</p>
-            </article>
-        </a>
-        <a href="/posts/individual-post">
-            <article>
-                <hgroup>
-                    <h3>Post title</h3>
-                    <p>By: Tim Westington</p>
-                </hgroup>
-                <p style="color:hsl(205, 20%, 32%)">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend est urna, vel rhoncus mauris.</p>
-                <p>Category: Lifestyle</p>
-            </article>
-        </a>
-        <a href="/posts/individual-post">
-            <article>
-                <hgroup>
-                    <h3>Post title</h3>
-                    <p>By: Tim Westington</p>
-                </hgroup>
-                <p style="color:hsl(205, 20%, 32%)">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend est urna, vel rhoncus mauris.</p>
-                <p>Category: Lifestyle</p>
-            </article>
-        </a>
-        <a href="/posts/individual-post">
-            <article>
-                <hgroup>
-                    <h3>Post title</h3>
-                    <p>By: Tim Westington</p>
-                </hgroup>
-                <p style="color:hsl(205, 20%, 32%)">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend est urna, vel rhoncus mauris.</p>
-                <p>Category: Lifestyle</p>
-            </article>
-        </a>
-        <a href="/posts/individual-post">
-            <article>
-                <hgroup>
-                    <h3>Post title</h3>
-                    <p>By: Tim Westington</p>
-                </hgroup>
-                <p style="color:hsl(205, 20%, 32%)">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend est urna, vel rhoncus mauris.</p>
-                <p>Category: Lifestyle</p>
-            </article>
-        </a>
+        <% locals.posts.forEach(post => { %> 
+            <%- include('../partials/post.ejs', { post: post }) %>
+        <% }) %>
     </div>
 </section>

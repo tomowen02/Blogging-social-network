@@ -13,3 +13,7 @@
 .no-top-margin {
     margin-top: 0;
 }
+
+.post-article {
+    max-height: 400px;
+}
