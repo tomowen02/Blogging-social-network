@@ -49,7 +49,7 @@ router.post('/', async (req, res) => {
         let newPost = await post.save();
         newPost = await Post.populate(newPost, {path: 'category author'});
         //res.redirect(`movies/${newMovie.id}`)
-        res.redirect('posts');
+        res.redirect('posts'); // Is this correct?
     } catch (error) {
         console.log(error);
         renderNewPostPage(res, post, true);

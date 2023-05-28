@@ -7,6 +7,6 @@
         <p><a href="#">Moderation</a></p>
     </aside>
     <article class="no-top-margin">
-        <%- include(`_${locals.subpage || 'dashboard'}.ejs`) %>
+        <%- include(`${locals.subPagePath || '_dashboard'}.ejs`) %>
     </article>
 </div>
