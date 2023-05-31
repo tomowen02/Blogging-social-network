@@ -1,5 +1,7 @@
 <h2>All posts</h2>
-<p><a href="/posts/new" role="button">New post</a></p>
+<% if (locals.amAuthor) { %>
+    <p><a href="/posts/new" role="button">New post</a></p>
+<% } %>
 <form action="/posts" method="GET">
     <div class="grid">
         <input type="title" id="title" name="title" placeholder="Search" value="<%= locals.searchOptions.title %>">
@@ -16,13 +18,15 @@
     </div>
     <button type="submit">Search</button>
 </form>
-<section>
-    <label for="switch" class="inline">
-        All posts
-        <input type="checkbox" id="following-toggle" name="switch" role="switch" class="two-option-toggle">
-        Posts from bloggers I'm following
-    </label>
-</section>
+<% if (locals.user) { %>
+    <section>
+        <label for="switch" class="inline">
+            All posts
+            <input type="checkbox" id="following-toggle" name="switch" role="switch" class="two-option-toggle">
+            Posts from bloggers I'm following
+        </label>
+    </section>
+<% } %>
 <section>
     <div class="grid-basic">
         <% locals.posts.forEach(post => { %> 

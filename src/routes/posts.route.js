@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/post.model');
 const Category = require('../models/category.model');
+const { ensureAuthor } = require('../middleware/auth.middleware');
 
 // GET METHODS
 router.get('/', async (req, res) => {
-    let query = Post.find();
+    let query = Post.find().sort({ date: 'desc' });
     if (req.query.title != null && req.query.title != '') {
         query = query.regex('title', new RegExp(req.query.title, 'i'));
     }
@@ -26,7 +27,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/new', async (req, res) => {
+router.get('/new', ensureAuthor, async (req, res) => {
     const post = new Post();
     renderNewPostPage(res, post);
 });
@@ -37,13 +38,14 @@ router.get('/individual-post', async (req, res) => {
 
 
 // POST METHODS
-router.post('/', async (req, res) => {
+router.post('/', ensureAuthor, async (req, res) => {
     const post = new Post({
         title: req.body.title,
         description: req.body.description,
         category: req.body.category,
         body: req.body.body,
-        slug: req.body.slug
+        slug: req.body.slug,
+        author: req.user._id
     });
     try {
         let newPost = await post.save();

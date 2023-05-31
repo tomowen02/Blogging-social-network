@@ -8,8 +8,15 @@
         <ul>
             <li><a href="/posts">Posts</a></li>
             <li><a href="/bloggers">Bloggers</a></li>
-            <li><a href="/admin">Admin controls</a></li>
-            <li><a href="#">My Account</a></li>
+            <% if (locals.amAdmin) { %>
+                <li><a href="/admin">Admin controls</a></li>
+            <% } %>
+            <% if (locals.user) { %>
+                <li><a href="#">My Account</a></li>
+                <li><a href="/auth/logout">Log out</a></li>
+            <% } else { %>
+                <li><a href="/auth/google">Login</a></li>
+            <% } %>
         </ul>
     </nav>
 </div>
