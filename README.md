@@ -21,5 +21,8 @@
 ##### Posts page
 ![Posts page](https://i.ibb.co/sHnKxzv/Screenshot-2023-06-05-231151.png)
 
+##### Comments on post
+![Comments on post](https://i.ibb.co/NW4JGzd/Screenshot-2023-06-05-232814.png)
+
 ##### Admin dashboard
 ![Admin dashboard](https://i.ibb.co/9V9VrN1/Screenshot-2023-06-05-231416.png)
