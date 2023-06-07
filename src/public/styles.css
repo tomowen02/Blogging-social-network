@@ -1,3 +1,22 @@
+.hero {
+    background-color: #394046;
+    background-image: url("img/hero_background.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+header {
+    padding: 3rem 0;
+}
+
+.shaddow {
+    text-shadow: 0px 0px 12px rgba(119,119,119,0.6);
+}
+
+.h1-color {
+    color: var(--h1-color);
+}
+
 .inline {
     display: inline;
 }
@@ -15,5 +34,9 @@
 }
 
 .post-article {
-    height: 400px;
+    height: 450px;
+}
+
+.margin-bottom {
+    margin-bottom: 1em;
 }
