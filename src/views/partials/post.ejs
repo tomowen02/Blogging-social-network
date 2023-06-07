@@ -1,10 +1,13 @@
-<a href="/posts/individual-post">
-    <article class="post-article">
-        <hgroup>
-            <h3><%= post.title %></h3>
-            <p>By: <%= post.author ? post.author.name : "Unknown Author" %></p>
-        </hgroup>
-        <p style="color:hsl(205, 20%, 32%)"><%= post.description %></p>
-        <p>Category: <%= post.category.name %></p>
-    </article>
-</a>
+
+<article class="post-article">
+    <hgroup>
+        <a href="/posts/post/<%= post.slug %>"><h3><%= post.title %></h3></a>
+        <% if (post.author) { %>
+            <a href="/bloggers/<%= post.author.profileSlug %>"><p>By: <%= post.author.name %></p></a>
+        <% } else { %>
+            <p>By: Unknown Author</p>
+        <% } %>
+    </hgroup>
+    <p style="color:hsl(205, 20%, 32%)"><%= post.description %></p>
+    <a href="/posts?category=<%= post.category._id %>"><p>Category: <%= post.category.name %></p></a>
+</article>

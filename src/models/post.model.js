@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const slug = require('mongoose-slug-updater');
+mongoose.plugin(slug);
 
 const postSchema = new mongoose.Schema({
     title: {
@@ -26,8 +28,7 @@ const postSchema = new mongoose.Schema({
     },
     slug: {
         type: String,
-        trim: true,
-        required: true,
+        slug: "title",
         unique: true
     },
     date: {

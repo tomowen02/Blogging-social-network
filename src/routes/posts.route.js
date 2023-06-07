@@ -13,8 +13,15 @@ router.get('/', async (req, res) => {
     if (req.query.category != null && req.query.category != '') {
         query = query.where('category').equals(req.query.category);
     }
+    if (req.query.category != null && req.query.category != '') {
+        query = query.where('category').equals(req.query.category);
+    }
+    if (req.query.followingFilter == 'on') {
+        query = query.find({ author: { $in: req.user.following }});
+    }
     try {
         posts = await query.populate('category author').exec();
+        //console.log(posts);
         categories = await Category.find();
         res.render('posts/posts', {
             posts: posts,
@@ -32,8 +39,9 @@ router.get('/new', ensureAuthor, async (req, res) => {
     renderNewPostPage(res, post);
 });
 
-router.get('/individual-post', async (req, res) => {
-    res.render('posts/individual')
+router.get('/post/:slug', async (req, res) => {
+    const post = await Post.findOne({ slug: req.params.slug }).populate('author').exec();
+    res.render('posts/individual', { post: post });
 });
 
 
@@ -44,7 +52,6 @@ router.post('/', ensureAuthor, async (req, res) => {
         description: req.body.description,
         category: req.body.category,
         body: req.body.body,
-        slug: req.body.slug,
         author: req.user._id
     });
     try {

@@ -23,10 +23,10 @@ module.exports = (passport) => {
                     authID: profile.id
                 },
                 name: profile.displayName,
-                email: profile.emails[0].value,
-                profileSlug: "test"
+                email: profile.emails[0].value
             });
             await newUser.save();
+            console.log("New user: " + newUser);
             return done(null, newUser);
         } catch (error) {
             return done(error, false)

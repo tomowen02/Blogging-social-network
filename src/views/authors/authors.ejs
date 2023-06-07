@@ -1,42 +1,28 @@
 <h2>Bloggers</h2>
 <label for="switch" class="inline">
     All bloggers
-    <input type="checkbox" id="following-toggle" name="switch" role="switch" class="two-option-toggle">
+    <input type="checkbox" id="followingFilter" name="followingFilter" role="switch" class="two-option-toggle">
     Following
 </label>
 
 <article>
-    <section>
-        <hgroup>
-            <a href="/bloggers/example"><h3>Name of the blogger</h3></a>
-            <p>This is the bio of the author/ blogger. Author and blogger are used interchangeably.</p>
-        </hgroup>
-        <div class="inline">
-            27 Followers
-            <a href="#" role="button">Follow</a>
-        </div>
-    </section>
-    <hr>
-    <section>
-        <hgroup>
-            <a href="/bloggers/example"><h3>Name of the blogger</h3></a>
-            <p>This is the bio of the author/ blogger. Author and blogger are used interchangeably.</p>
-        </hgroup>
-        <div class="inline">
-            27 Followers
-            <a href="#" role="button">Follow</a>
-        </div>
-    </section>
-    <hr>
-    <section>
-        <hgroup>
-            <a href="/bloggers/example"><h3>Name of the blogger</h3></a>
-            <p>This is the bio of the author/ blogger. Author and blogger are used interchangeably.</p>
-        </hgroup>
-        <div class="inline">
-            27 Followers
-            <a href="#" role="button">Follow</a>
-        </div>
-    </section>
-    <hr>
+    <% locals.authors.forEach(author => { %> 
+        <section>
+            <hgroup>
+                <a href="/bloggers/<%= author.profileSlug %>"><h3><%= author.name %></h3></a>
+                <p><%= author.authorBio ? author.authorBio : "This person does not have a bio." %></p>
+            </hgroup>
+            <div class="inline">
+                27 Followers
+                <% if (locals.user) { %>
+                    <% if (locals.user.isFollowing(author.id) && author.id != locals.user.id) { %>
+                        <a data-url="/bloggers/unfollow/<%= author.id %>" role="button" class="follow-unfollow-button" href="#">Unfollow</a>
+                    <% } else if (!locals.user.isFollowing(author.id) && author.id != locals.user.id) { %>
+                        <a data-url="/bloggers/follow/<%= author.id %>" role="button" class="follow-unfollow-button" href="#">Follow</a>
+                    <% } %>
+                <% } %>
+            </div>
+        </section>
+        <hr>
+    <% }) %>
 </article>

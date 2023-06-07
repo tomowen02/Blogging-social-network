@@ -2,18 +2,13 @@
 
 <section>
     <hgroup>
-        <h2>This is the title of the post</h2>
-        <h3>This is the short description of the post. It is just a placeholder for a post. The final page will contain real user-generated content.</h3>    
+        <h2><%= locals.post.title %></h2>
+        <p>By: <%= locals.post.author ? locals.post.author.name : 'Unknown Author' %></p> 
+        <p><%= locals.post.description %></p>   
     </hgroup>
-    <p>
-        This is the main body of the post. Integer egestas tortor felis, rutrum aliquam risus feugiat imperdiet. Praesent non tellus sit amet neque blandit maximus sit amet at ligula. Nam eget scelerisque sapien, non tincidunt lorem. Phasellus id metus ac neque malesuada malesuada. Cras nisi tortor, tincidunt dignissim semper quis, molestie dictum lectus. Vivamus eget lacus a nisl mollis blandit quis interdum nibh. Duis non felis nunc.
-    
-        Aliquam non justo commodo urna sollicitudin mollis a nec dolor. Maecenas porta rhoncus rutrum. Suspendisse non quam vitae leo feugiat hendrerit ac faucibus ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hac habitasse platea dictumst. Ut dictum venenatis justo, a consequat nibh facilisis eget. Sed pharetra vestibulum porttitor. Donec tincidunt rhoncus augue, eu placerat orci gravida at. Cras tempor massa arcu, eget aliquet sapien egestas eu. Nulla non neque metus. Nunc felis nibh, varius ac porta non, molestie eu diam. Morbi convallis sapien vitae ipsum condimentum, in vehicula tellus fermentum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-        
-        Duis quis congue erat. Sed sagittis volutpat leo vitae tempor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent commodo ultricies venenatis. Praesent scelerisque ante tellus, vel dictum diam gravida eget. Curabitur ultrices lectus non mauris pulvinar, sit amet vestibulum neque cursus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed nulla quis erat scelerisque maximus.
-        
-        Integer fermentum fermentum odio, sed pellentesque neque viverra at. Proin in aliquet sapien. Integer facilisis velit sed mattis pulvinar. Proin non turpis et lorem pulvinar finibus. Etiam ultrices libero quis dui lobortis gravida. Sed bibendum condimentum aliquam. Sed imperdiet diam eu orci suscipit, id tristique odio tincidunt. Nam et nunc eget diam molestie iaculis. Vivamus egestas ipsum quis eros sollicitudin tristique. Aenean magna purus, dictum sit amet ultricies a, semper placerat metus. Phasellus at volutpat mi, pretium ultricies diam. Nunc eget nisl magna. Vestibulum ac arcu aliquam, eleifend magna non, commodo lacus. Sed vel malesuada arcu. Maecenas scelerisque neque vel lacinia pharetra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-    </p>    
+    <article class="no-top-margin">
+        <p><%= locals.post.body %></p> 
+    </article>   
 </section>
 <section>
     <h2>Comments</h2>

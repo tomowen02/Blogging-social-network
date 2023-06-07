@@ -14,28 +14,17 @@
     
     value="<%= locals.post ? locals.post.description : '' %>">
 
-<div class="grid">
-    <div>
-        <label for="slug">Slug</label>
-        <input
-            id="slug"
-            name="slug"
-            placeholder="Slug"
-            required
-            value="<%= locals.post ? locals.post.slug : '' %>">
-    </div>
-    <div>
-        <label for="category">Category</label>
-        <select name="category" id="category" placeholder="Category" required>
-            <% locals.categories.forEach(category => { %>
-                <% if (category._id == locals.post.category){ %> 
-                    <option selected label="<%= category.name %>" value="<%= category._id %>">
-                <% } else { %>
-                    <option label="<%= category.name %>" value="<%= category._id %>">
-                <% } %>  
-            <% }) %>
-        </select>
-    </div>
+<div>
+    <label for="category">Category</label>
+    <select name="category" id="category" placeholder="Category" required>
+        <% locals.categories.forEach(category => { %>
+            <% if (category._id == locals.post.category){ %> 
+                <option selected label="<%= category.name %>" value="<%= category._id %>">
+            <% } else { %>
+                <option label="<%= category.name %>" value="<%= category._id %>">
+            <% } %>  
+        <% }) %>
+    </select>
 </div>
 <label for="body">Main body</label>
 <textarea

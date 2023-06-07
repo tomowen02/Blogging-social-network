@@ -16,17 +16,23 @@
             <% }) %>
         </select>
     </div>
-    <button type="submit">Search</button>
-</form>
-<% if (locals.user) { %>
-    <section>
+    <% if (locals.user) { %>
         <label for="switch" class="inline">
             All posts
-            <input type="checkbox" id="following-toggle" name="switch" role="switch" class="two-option-toggle">
+            <input
+                type="checkbox"
+                id="followingFilter"
+                name="followingFilter"
+                role="switch"
+                class="two-option-toggle"
+                <%= locals.searchOptions.followingFilter == 'on' ? ' checked' : '' %>>
             Posts from bloggers I'm following
         </label>
-    </section>
-<% } %>
+        <div class="margin-bottom"></div>
+    <% } %>
+    <button type="submit">Update Search</button>
+</form>
+
 <section>
     <div class="grid-basic">
         <% locals.posts.forEach(post => { %> 
